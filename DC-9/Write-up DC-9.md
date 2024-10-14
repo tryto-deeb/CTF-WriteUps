@@ -413,7 +413,7 @@ Efectivamente es vulnerable, aunque este tipo de vulnerabilidad no nos va a perm
 ### Port Knocking
 
 
-Si recordamos cuando [enumeramos](https://github.com/tryto-deeb/Pentesting-Write-Ups/blob/master/Write-up%20DC-9.md#escaneo-de-puertos) los puertos nos aparecía el puerto 22 (SSH) como filtrado y no open, con los credenciales que hemos encontrado en la [base de datos dumpeada](https://github.com/tryto-deeb/Pentesting-Write-Ups/blob/master/Write-up%20DC-9.md#dumpear-filas-de-username-y-password) obtuvimos credenciales de los usuarios, podríamos probar si algún usuario reutiliza la contraseña para conectarse por ssh.
+Si recordamos cuando [enumeramos](https://github.com/tryto-deeb/CTF-WriteUps/blob/master/DC-9/Write-up%20DC-9.md#escaneo-de-puertos) los puertos nos aparecía el puerto 22 (SSH) como filtrado y no open, con los credenciales que hemos encontrado en la [base de datos dumpeada](https://github.com/tryto-deeb/CTF-WriteUps/blob/master/DC-9/Write-up%20DC-9.md#dumpear-filas-de-username-y-password) obtuvimos credenciales de los usuarios, podríamos probar si algún usuario reutiliza la contraseña para conectarse por ssh.
 
 ```shell
 ssh admin@10.10.0.6
@@ -490,7 +490,7 @@ Fallo en la verificación de la clave del host.
 ```
 <br>
 
-Podemos solucionar esto tal y como nos dice en el mensaje ejecutando `ssh-keygen -f '/home/user/.ssh/known_hosts' -R '10.10.0.6'`. Ahora sí, ya podemos conectarnos por ssh, aunque parece ser que el usuario admin no esta reutilizando la contraseña, asique vamos a probar si alguno de los usuarios que [encontramos en la base de datos](https://github.com/tryto-deeb/Pentesting-Write-Ups/blob/master/Write-up%20DC-9.md#dumpear-filas-de-username-y-password) reutiliza la contraseña.
+Podemos solucionar esto tal y como nos dice en el mensaje ejecutando `ssh-keygen -f '/home/user/.ssh/known_hosts' -R '10.10.0.6'`. Ahora sí, ya podemos conectarnos por ssh, aunque parece ser que el usuario admin no esta reutilizando la contraseña, asique vamos a probar si alguno de los usuarios que [encontramos en la base de datos](https://github.com/tryto-deeb/CTF-WriteUps/blob/master/DC-9/Write-up%20DC-9.md#dumpear-filas-de-username-y-password) reutiliza la contraseña.
 
 El usuario **janitor** es el que esta reutilizando la contraseña *Ilovepeepee*, asique ya conseguimos estar dentro del servidor a través de ssh.
 
@@ -574,7 +574,7 @@ B4-Tru3-001
 ```
 
 
-Probando estas contraseñas para [otros usuarios](https://github.com/tryto-deeb/Pentesting-Write-Ups/blob/master/Write-up%20DC-9.md#dumpear-filas-de-username-y-password) vemos que la contraseña *B4-Tru3-001* pertenece a **fredf** que tiene el puesto de System Administrator.
+Probando estas contraseñas para [otros usuarios](https://github.com/tryto-deeb/CTF-WriteUps/blob/master/DC-9/Write-up%20DC-9.md#dumpear-filas-de-username-y-password) vemos que la contraseña *B4-Tru3-001* pertenece a **fredf** que tiene el puesto de System Administrator.
 
 Nos cambiamos al usuario **fredf** con el comando `su fredf`.<br>
 <br>
